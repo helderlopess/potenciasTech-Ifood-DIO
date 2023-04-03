@@ -34,3 +34,4 @@ else if (formaPagamento > 3) {
   preco = (preco + condicao).toFixed(2);
   console.log(`A forma de pagamento foi: em ${formaPagamento} vezes. O preço ficou: R$ ${preco}`);
 }
+
