@@ -2,7 +2,7 @@
 
 (function () {
   let formaPagamento = 1;
-  let preco = 100;
+  let preco = 100.99;
   let condicao = 0;
 
   function verificaCondicao(opcao) {
