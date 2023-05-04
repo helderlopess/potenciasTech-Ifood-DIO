@@ -1,59 +1,23 @@
 *{
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
-  list-style: none;
+  list-style: none; /*nao é uma boa pratica mas ficara aqui enquanto não é definido quais itens não terão listagem*/
 }
+body{
+  background-color:#f6f8fc;
+}
+
 
 h1 {
   color:red;
 }
 
+/*esta como content da aula*/
 .flexsec{
+  width: 100vh;
+  height: 100vh;
   padding: 1rem;
+  background-color: #FFF;
     
 }
-
-/* lista > na aula ela esta como pokemons*/
-.listapkmn{
-  display: grid;
-  margin: 0;
-  padding: 0;
-  grid-template-columns: 1fr 1fr;  
-}
-
-/* item da lista > mudado para .pokemon*/
-.pokemon {
-  display: flex;
-  margin: 0.5rem;  
-  padding: 1rem;
-  flex-direction: column;
-  background-color: #49D0B0;
-  border-radius: 1rem;
-  color: #FFF;
-}
-
-.listapkmn li:hover {
-  background-color: #14a86d;  
-}
-.detail{
-  display:flex;
-  flex-direction: row
-  ;
-}
-
-.pokemon .detail img{
-  max-width: 100%;
-  height: 100px;
-}
-.pokemon .detail .types{
-  padding: 0;
-  margin: 0;
-  
-}
-
-.pokemon .number{
-  text-align: right;
-  color:#00000060;  
-}
-
 
