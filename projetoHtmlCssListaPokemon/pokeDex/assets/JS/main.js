@@ -1,0 +1,57 @@
+//o fetch retornara uma promise, uma promessa de resposta para solicitação. o fetch gera um response
+//este primeiro  then faz uma promise e retorna um arquivo json que sera processado pelo 2 then que por fim imprimo no log
+//utilizando a arrow function  quando for uma funcao que nao necessita de contexto isolado, ou simples callback
+//arrow fucntion nao precisa de um corpo caso seja chamada apenas uma linha de retorno
+//recebe o body convertido
+//modelo de funcao convencional declarando o nome function
+
+//uma lista retorndo um map
+/*function convertPokemonTypesToLi(pokemonTypes) {
+  return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
+}*/
+
+function convertPokemonToLi(pokemon) {
+  return `
+    <li class="pokemon ${pokemon.type}">
+      <span class="number"> ${pokemon.number} </span>
+      <span class="name">${pokemon.name}</span>
+      <div class="detail">
+        <ol class="types">
+          ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+        </ol>
+        <div class="img">  
+          <img src="${pokemon.photo}"
+              alt="${pokemon.name}" />                                  
+        </div>
+      </div>
+    </li>  
+  `
+}
+
+const pokemonList = document.getElementById('pokemonList')
+
+//listas onde sera renderizados todos os pokemons de uma unica vez
+//convertendo o objeto em uma lista html
+pokeApi.getPokemons().then((pokemons = []) => {
+  //pega a lista de pokemons, mapeia a lista, converte a lista para li e junta todos os li sem separados
+  pokemonList.innerHTML += pokemons.map(convertPokemonToLi).join('')
+  
+})
+/*const listItens = []
+
+for (let i = 0;i < pokemons.length;i++) {
+  const pokemon = pokemons[i];
+  listItens.push(convertPokemonToLi(pokemon))
+
+}
+console.log(listItens)*/
+  // não sera usado || .finally(() => console.log("Requisição concluida!"))
+
+  //THEN retorno da promisse no 1 then e retorno do 1 no segundo
+
+/*
+semelhante ao:
+try {
+} catch (error) {
+} finally {}
+*/
