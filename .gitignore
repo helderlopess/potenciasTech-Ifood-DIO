@@ -128,3 +128,4 @@ dist
 
 #arquivos de coleta y
 capture*
+*.ipynb

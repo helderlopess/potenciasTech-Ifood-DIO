@@ -12,7 +12,8 @@ function convertPokeApiDetailToPokemon(pokemonsDetail) {
 
   pokemon.types = types
   pokemon.type = type
-  pokemon.photo = pokemonsDetail.sprites.other.dream_world.front_default
+  pokemon.photo = `${pokemonsDetail["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]}`
+                  /*pokemonsDetail.sprites.other.dream_world.front_default */
   
   return pokemon
 }
@@ -23,7 +24,7 @@ pokeApi.getPokemonDetail = (pokemon) => {
     .then(convertPokeApiDetailToPokemon) //evoca a classe ja instanciada
 }
 
-pokeApi.getPokemons = (offset = 0,limit = 150) => {
+pokeApi.getPokemons = (offset = 0,limit = 5) => {
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
   return fetch(url)

@@ -9,11 +9,18 @@
 /*function convertPokemonTypesToLi(pokemonTypes) {
   return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
 }*/
+const pokemonList = document.getElementById('pokemonList')
+const loadMoreButton = document.getElementById('loadMoreButton')
+const limit = 5
+let offset = 0
 
-function convertPokemonToLi(pokemon) {
+
+
+function loadPokemonItens(offset,limit) {
+  function convertPokemonToLi(pokemon) {
   return `
     <li class="pokemon ${pokemon.type}">
-      <span class="number"> ${pokemon.number} </span>
+      <span class="number"> #${pokemon.number} </span>
       <span class="name">${pokemon.name}</span>
       <div class="detail">
         <ol class="types">
@@ -26,17 +33,22 @@ function convertPokemonToLi(pokemon) {
       </div>
     </li>  
   `
+  }
+  
+  pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+    const newHtml = pokemons.map(convertPokemonToLi).join('')
+    pokemonList.innerHTML += newHtml
+    
+  })
 }
 
-const pokemonList = document.getElementById('pokemonList')
+loadMoreButton.addEventListener('click',() => {
+  loadPokemonItens()
 
-//listas onde sera renderizados todos os pokemons de uma unica vez
-//convertendo o objeto em uma lista html
-pokeApi.getPokemons().then((pokemons = []) => {
-  //pega a lista de pokemons, mapeia a lista, converte a lista para li e junta todos os li sem separados
-  pokemonList.innerHTML += pokemons.map(convertPokemonToLi).join('')
-  
 })
+//listas onde sera renderizados todos os pokemons de uma unica vez
+//pega a lista de pokemons, mapeia a lista, converte a lista para li e junta todos os li sem separados
+//convertendo o objeto em uma lista html
 /*const listItens = []
 
 for (let i = 0;i < pokemons.length;i++) {
