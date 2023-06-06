@@ -2,7 +2,8 @@ const pokeApi = {}
 
 function convertPokeApiDetailToPokemon(pokemonsDetail) {
   const pokemon = new Pokemon() //instanciando a classe criada
-  pokemon.number = pokemonsDetail.order
+  //foi corrigido de order para id para que a # ficasse correta
+  pokemon.number = pokemonsDetail.id
   pokemon.name = pokemonsDetail.name
   //convertendo a lista para um mapa em string
   
@@ -24,7 +25,7 @@ pokeApi.getPokemonDetail = (pokemon) => {
     .then(convertPokeApiDetailToPokemon) //evoca a classe ja instanciada
 }
 
-pokeApi.getPokemons = (offset = 0,limit = 5) => {
+pokeApi.getPokemons = (offset=0 , limit=5) => {
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
   return fetch(url)
