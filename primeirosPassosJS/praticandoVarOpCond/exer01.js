@@ -14,7 +14,7 @@ let media = 0;
 
 for (let i = 0;i < notas.length;i++) {
   media += notas[i];
-  if (i >= notas.length - 1) {
+  if (i >= notas.length ) {
     media = media / 3;
   } else {}
 }
@@ -28,4 +28,6 @@ else if (media >= 5 && media < 7) {
 }
 else if (media > 7) {
   console.log(`Média: ${media.toFixed(2)}. Passou de semestre`);
+} else {
+  console.log("a media é")
 }
